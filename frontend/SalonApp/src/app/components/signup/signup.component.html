@@ -1,0 +1,102 @@
+<div class="signup_outer_block">
+    <div class="container signup_block">
+        <div class="cust_block">
+            <h1 class="center" style="text-transform: uppercase;font-family: 'Play', sans-serif;">Sign Up</h1>
+            <div class="container mycontainer">
+                <div>
+                    <form #customerForm="ngForm" (ngSubmit)="handleCustomerData(customerForm.value)">
+                        <div>
+                            <input type="hidden" name="pk" id="pk" [(ngModel)]="customer.pk">
+                            <div><label class="label" for="firstName">First Name</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="firstName" id="firstName"
+                                    [(ngModel)]="customer.firstName" required #trackName="ngModel">
+                                <p class="alert" *ngIf="!trackName.valid && trackName.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="lastName">Last Name</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="lastName" id="lastName"
+                                    [(ngModel)]="customer.lastName" required #trackName1="ngModel">
+                                <p class="alert" *ngIf="!trackName1.valid && trackName1.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="email">Email</label></div>
+                            <div>
+                                <input class="form-control" type="email" name="email" id="email" [(ngModel)]="customer.email"
+                                    required #trackName2="ngModel" [email]="true">
+                                <p class="alert" *ngIf="!trackName2.valid && trackName2.touched">this is an invalid entry!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="contact1">Contact No.</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="contact1" id="contact1"
+                                    [(ngModel)]="customer.contact1" required #trackName3="ngModel">
+                                <p class="alert" *ngIf="!trackName3.valid && trackName3.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="contact2">Alternate Contact No.</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="contact2" id="contact2"
+                                    [(ngModel)]="customer.contact2">
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label">Gender</label></div>
+                            <div>
+                                <input class="radio-inline" type="radio" name="gender" id="genderM"
+                                    [checked]="customer.gender === 'Male'" value="Male" (click)="setGender('Male')"><label
+                                    for="genderM" (click)="setGender('Male')">Male</label>
+                                <input class="radio-inline" type="radio" name="gender" id="genderF"
+                                    [checked]="customer.gender === 'Female'" value="Female" (click)="setGender('Female')"><label
+                                    for="genderF" (click)="setGender('Female')">Female</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="password">Password</label></div>
+                            <div>
+                                <input class="form-control" type="password" name="password" id="password"
+                                    [(ngModel)]="customer.password" #trackName4="ngModel">
+                                <p class="alert" *ngIf="!trackName4.valid && trackName4.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="cpassword">Confirm Password</label></div>
+                            <div>
+                                <input class="form-control" type="password" name="cpassword" id="cpassword"
+                                    [(ngModel)]="customer.cpassword" appCustomPasswordValidator="password" #trackName5="ngModel">
+                                <p class="alert" *ngIf="!trackName5.valid && trackName5.touched && trackName5.errors?.required">
+                                    this is required!</p>
+                                <p class="alert"
+                                    *ngIf="trackName5.touched && trackName5.errors?.notEqual && !trackName5.errors?.required">
+                                    Passwords do not match!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="role">User Type</label></div>
+                            <div>
+                                <select class="form-control" name="role" id="role" [(ngModel)]="customer.role" required
+                                    #trackName6="ngModel">
+                                    <option value="1">Customer</option>
+                                    <option value="2">Vendor</option>
+                                </select>
+                                <p class="alert" *ngIf="!trackName6.valid && trackName6.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="submit" class="btn mybutton btn-block" value="Save"
+                                    [disabled]="!customerForm.form.valid">
+                            </div>
+                            <div><button class="btn mybutton_outline btn-block" type="reset">Reset</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

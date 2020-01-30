@@ -1,0 +1,5 @@
+package com.salon.service;
+
+public class SalonServiceImpl implements SalonService {
+
+}

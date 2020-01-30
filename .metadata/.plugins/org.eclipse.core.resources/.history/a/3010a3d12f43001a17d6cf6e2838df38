@@ -1,0 +1,39 @@
+package com.salon.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.salon.exception.ResourceNotfoundException;
+import com.salon.model.Salon;
+import com.salon.model.User;
+import com.salon.repository.SalonRepository;
+
+@Service
+public class SalonServiceImpl implements SalonService {
+
+	@Autowired
+	SalonRepository srepo;
+	
+	//add a new salon
+	public int addSalon(Salon s) {
+		Salon s1=srepo.findByContact1(s.getContact1());
+		if(s1==null) {
+			srepo.save(s);
+			return 1;
+		} else
+			return 0;
+		}
+	}
+	
+	//deactivate a salon
+public String deactivateUser(Long pk) {
+	Salon salon = srepo.findById(pk).orElseThrow(() -> new ResourceNotfoundException("Salon", "pk", pk));
+	salon.setActiveDeactive(0);
+	srepo.save(salon);
+	return "deactivated";
+}
+	
+	//update a salon
+	
+	//get all salons	
+}

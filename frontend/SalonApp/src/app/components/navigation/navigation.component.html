@@ -1,0 +1,70 @@
+<div>
+    <header>
+        <div class="top_header">
+            <ul style="margin-bottom: 0;">
+                <li class="nav-link active"><span><i class='fa fa-phone'></i>+91 123123123</span></li>
+                <li class="nav-link active"><span><i class='fa fa-envelope'></i>foobarcdac@gmail.com</span></li>
+                <li class="nav-link active"><span><i class='fa fa-map-marker'></i>Pune, Maharashtra</span></li>
+                <li class="nav-link active">
+                    <span *ngIf="authService.isUserLoggedIn()">
+                        <a [routerLink]='["/logout"]' style="color:#fff;"><i class='fa fa-user'></i>Logout</a>
+                    </span>
+                    <span *ngIf="!authService.isUserLoggedIn()">
+                        <a [routerLink]='["/login"]' style="color:#fff;"><i class='fa fa-user'></i>Login</a>
+                        |
+                        <a style="color:#fff;" [routerLink]='["/signup"]'>Sign Up</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="mid_header">
+            <a class="navbar-brand pacifico brandname" [routerLink]='["/home"]'>The Local Barber</a>
+        </div>
+    </header>
+    <!-- Navigation -->
+    <nav class="navbar navi navbar-expand-lg navbar-dark bg_teal">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div *ngIf="authService.isUserLoggedIn()"> -->
+                <div *ngIf="role==0; else elseBlock" class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" [routerLink]='["/orders"]'>My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" [routerLink]='["/profile"]'>Edit Profile</a>
+                        </li>
+                    </ul>
+                </div>
+                <ng-template #elseBlock>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link active" [routerLink]='["/salons"]'>My Salons</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" [routerLink]='["/services"]'>My Services</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" [routerLink]='["/dashboard"]'>Dashboard</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" [routerLink]='["/notifications"]'>Notifications</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-template>
+            <!-- </div> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active" [routerLink]='["/catalog"]'>Find me a salon</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

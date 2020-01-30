@@ -1,0 +1,36 @@
+package com.salon.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.salon.model.Salon;
+import com.salon.model.User;
+import com.salon.service.SalonService;
+
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
+@RequestMapping(value="/salons")
+public class SalonController {
+
+	@Autowired
+	SalonService sservice;
+	
+	@PostMapping("/add")
+	public int addSalon(@RequestBody Salon salon) {
+		return sservice.addSalon(salon);
+	}
+	
+	@GetMapping(value="/profile/{pk}")
+	public User getSalon(@PathVariable("pk") Long pk) {
+		return sservice.getSalonDetails(pk);
+	}
+	
+	@GetMapping(value="/deactivate")
+	@PutMapping(value="/update")
+}

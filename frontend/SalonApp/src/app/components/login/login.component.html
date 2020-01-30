@@ -1,0 +1,30 @@
+<div class="signup_outer_block">
+  <div class="container signup_block">
+    <div class="cust_block">
+      <h1 class="center" style="text-transform: uppercase;font-family: 'Play', sans-serif;">Log In</h1>
+      <div class="container" class="loginform">
+
+        <div>
+          <label for="username">Username</label>
+          <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter Username" name="username"
+            required>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" placeholder="Enter Password"
+            name="password" required>
+        </div>
+
+        <div>
+          <div><button type="button" (click)=checkLogin() class="btn mybutton btn-block">Login</button></div>
+        </div>
+
+        <div>
+          <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

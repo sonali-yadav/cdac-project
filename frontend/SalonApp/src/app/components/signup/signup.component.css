@@ -1,0 +1,26 @@
+.cust_block {
+    background-color: #ffffff;
+    width: 25rem;
+    /* border: 4px solid #19b5bc; */
+    border-radius: 15px;
+    padding: 1.5em;
+}
+.signup_block {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2em;
+}
+.signup_outer_block {
+    background: #ffffff url('../../../assets/img/barber.jpg') center fixed no-repeat;
+    background-size: cover;
+}
+.ng-invalid.ng-touched:not(form)  {
+    border: 1px solid red;
+  }
+.alert {
+    color: red;
+    font-size: smaller;
+  }
+  form > div {
+    margin-top: 1em;
+  }

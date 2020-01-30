@@ -1,0 +1,114 @@
+<div class="container outer_box_div">
+    <div class="box_div">
+        <div class="flexibox head_block">
+            <h1>My Salons</h1>
+            <div><button class="btn mybutton" data-toggle="modal" data-target="#exampleModal"><span
+                        class="fa fa-plus"></span> Add New</button></div>
+        </div>
+        <div class="center">
+            <img src="../../assets/img/salonhero1.jpg" alt="" class="main_img">
+        </div>
+        <div class="outer_box_div">
+            <div class="flexibox head_block">
+                <app-salon></app-salon>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" id="exampleModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg_teal" style="color: white;">
+                <h5 class="modal-title"><span class="fa fa-plus"></span> Add New Salon </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form #salonForm="ngForm" (ngSubmit)="handleSalonData(salonForm.value)">
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <input type="hidden" name="pk" id="pk" [(ngModel)]="salon.pk">
+                            <div><label class="label" for="salonName">Salon Name</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="salonName" id="salonName"
+                                    [(ngModel)]="salon.salonName" required #trackName="ngModel">
+                                <p class="alert" *ngIf="!trackName.valid && trackName.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="address">Address</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="address" id="address"
+                                    [(ngModel)]="salon.address" required #trackName1="ngModel">
+                                <p class="alert" *ngIf="!trackName1.valid && trackName1.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="description">Description</label></div>
+                            <div>
+                                <textarea class="form-control" name="description" id="description"
+                                    [(ngModel)]="salon.description" required #trackName2="ngModel"></textarea>
+                                <p class="alert" *ngIf="!trackName2.valid && trackName2.touched">this is an invalid
+                                    entry!
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="contact1">Contact No.</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="contact1" id="contact1"
+                                    [(ngModel)]="salon.contact1" required #trackName3="ngModel">
+                                <p class="alert" *ngIf="!trackName3.valid && trackName3.touched">this is required!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="contact2">Alternate Contact No.</label></div>
+                            <div>
+                                <input class="form-control" type="text" name="contact2" id="contact2"
+                                    [(ngModel)]="salon.contact2">
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label">Salon Type</label></div>
+                            <div>
+                                <input class="radio-inline" type="radio" name="salonType" id="salonTypeM"
+                                    [checked]="salon.salonType === 1" value="1" (click)="setSalonType(1)"><label
+                                    for="salonTypeM" (click)="setGender(1)">Male</label>
+                                <input class="radio-inline" type="radio" name="salonType" id="salonTypeF"
+                                    [checked]="salon.salonType === 2" value="2" (click)="setSalonType(2)"><label
+                                    for="salonTypeF" (click)="setGender(2)">Female</label>
+                                <input class="radio-inline" type="radio" name="salonType" id="salonTypeU"
+                                    [checked]="salon.salonType === 3" value="3" (click)="setSalonType(2)"><label
+                                    for="salonTypeU" (click)="setSalonType(3)">Unisex</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div><label class="label" for="homeServiceFlag">Provides Home Service?</label>
+                                <input class="checkbox-inline" type="checkbox" name="homeServiceFlag"
+                                    id="homeServiceFlag" [(ngModel)]="salon.homeServiceFlag" #trackName4="ngModel"
+                                    value="1" [checked]="salon.homeServiceFlag === 1">
+                                <p class="alert" *ngIf="!trackName4.valid && trackName4.touched">this is required!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn mybutton">Save</button>
+                    <button type="button" class="btn mybutton_outline" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- the google maps api -->
+<script type="text/javascript"
+    src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
+<script>
+    var autocomplete = new google.maps.places.Autocomplete($("#address")[0], {});
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var place = autocomplete.getPlace();
+        console.log(place.address_components);
+    });
+</script>

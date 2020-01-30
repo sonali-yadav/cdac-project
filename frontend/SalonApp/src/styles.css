@@ -1,0 +1,91 @@
+/*
+Colors:
+	Body 		: #333
+	Headers 	: #2B2D42
+	Primary 	: #D10024
+	Dark 		: #15161D ##1E1F29
+	Grey 		: #E4E7ED #FBFBFC #8D99AE #B9BABC
+*/
+/* font-family: 'Raleway', sans-serif;
+font-family: 'Play', sans-serif; */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.center {
+	text-align: center;
+}
+.mycontainer {
+	margin: 1em auto;
+}
+i {
+	color:#19B5BC;
+	margin-right: 0.5em;
+}
+
+.inlineb {
+	display: inline-block;
+}
+footer {
+	position: absolute;
+    bottom: 0;
+    width:100%;
+}
+.bg_teal {
+    background-color: #19B5BC;
+}
+.mybutton, .mybutton_outline:hover {
+	background-color: #19B5BC;
+	color: #ffffff;
+	text-transform: uppercase;
+	border: 2px solid #19B5BC;
+}
+.mybutton_outline, .mybutton:hover {
+	border: 2px solid #19B5BC;
+	background-color: #ffffff;
+	color:  #19B5BC;
+	text-transform: uppercase;
+}
+.mybutton,.mybutton_outline {
+	margin-top: 1em;
+	border-radius: 8px;
+	text-align: center;
+	padding: 8px 1.5em;
+	font-family: 'Play', sans-serif;
+}
+.box_div {
+	border: 1px solid #cacaca;
+	border-radius: 10px;
+	/* background-color: #E9F6F8 ; */
+}
+.outer_box_div,.inner_box_div,.box_div {
+	padding: 1em;
+}
+.flexibox {
+	display: flex;
+}
+.inner_box_div {
+	border: 1px solid #cacaca;
+	background-color: #ffffff;
+}
+.head_block {
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	font-family: 'Raleway', sans-serif;
+	padding-bottom: 0.5em;
+}
+.main_img {
+	width: 99%;
+	height: 60vh;
+}
+.halfbutn {
+	width: 48%;
+}
+.userimg {
+	width: 18rem;
+	height: 18rem;
+}
+input[type="radio"],input[type="checkbox"] {
+	margin: 1px 5px;
+}

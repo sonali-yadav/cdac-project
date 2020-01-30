@@ -1,0 +1,13 @@
+package com.salon.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.salon.repository.SalonRepository;
+
+@Service
+public class SalonServiceImpl implements SalonService {
+
+	@Autowired
+	SalonRepository srepo;
+}

@@ -1,0 +1,5 @@
+package com.salon.repository;
+
+public interface SalonRepository {
+
+}
